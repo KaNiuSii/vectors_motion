@@ -8,7 +8,7 @@ public class DataDisplay : MonoBehaviour
 {
     public VectorData bind;
     public VectorsManager vectorsManager; // Reference to the VectorsManager
-
+    public TextMeshProUGUI indx;
     [SerializeField]
     private Slider lenSlider;
     [SerializeField]

@@ -8,6 +8,7 @@ public class VectorsManager : MonoBehaviour
     public VectorData mainVector;
     public GameObject vector;
     private bool rotating = false;
+    public DataDisplayManager dispMgr;
     private void Start()
     {
         vectors.Add(mainVector);
@@ -18,6 +19,7 @@ public class VectorsManager : MonoBehaviour
         VectorFollowTip follow = v.AddComponent<VectorFollowTip>();
         follow.toFollow = vectors[vectors.Count - 1];
         vectors.Add(v.GetComponent<VectorData>());
+        dispMgr.UpdateDisplays();
     }
     public void RemoveVector(int index)
     {
@@ -25,6 +27,7 @@ public class VectorsManager : MonoBehaviour
         VectorData v = vectors[index];
         vectors.RemoveAt(index);
         Destroy(v.gameObject);
+        dispMgr.UpdateDisplays();
     }
 
     public void RotationChange()
