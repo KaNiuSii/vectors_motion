@@ -12,7 +12,17 @@ public class DataDisplayManager : MonoBehaviour
     {
         UpdateDisplays();
     }
-
+    float t = 0f;
+    bool updated = false;
+    private void Update()
+    {
+        t += Time.deltaTime;
+        if (t > 0.1f && !updated)
+        {
+            updated = true;
+            UpdateDisplays();
+        }
+    }
     public void UpdateDisplays()
     {
         ClearExistingDisplays();

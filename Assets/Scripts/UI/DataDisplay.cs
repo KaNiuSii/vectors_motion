@@ -38,15 +38,7 @@ public class DataDisplay : MonoBehaviour
         bind.drawColor = drawColorImage.color;
 
         // Update display texts
-        lenValText.text = lenSlider.value.ToString("F2");
-    }
-
-    public void DeleteDataAndDisplay()
-    {
-        int index = vectorsManager.vectors.IndexOf(bind);
-        if (index != -1)
-        {
-            vectorsManager.RemoveVector(index);
-        }
+        int lenInt = (int)lenSlider.value;
+        lenValText.text = lenInt.ToString();
     }
 }

@@ -15,18 +15,19 @@ public class VectorsManager : MonoBehaviour
     }
     public void AddVector()
     {
+        if (vectors.Count >= 7) return;
         GameObject v = Instantiate(vector);
         VectorFollowTip follow = v.AddComponent<VectorFollowTip>();
         follow.toFollow = vectors[vectors.Count - 1];
         vectors.Add(v.GetComponent<VectorData>());
         dispMgr.UpdateDisplays();
     }
-    public void RemoveVector(int index)
+    public void RemoveVector()
     {
-        if (index < 0 || index >= vectors.Count) return;
-        VectorData v = vectors[index];
-        vectors.RemoveAt(index);
-        Destroy(v.gameObject);
+        if (vectors.Count <= 1) return;
+        VectorData vToDel = vectors[vectors.Count - 1];
+        vectors.RemoveAt(vectors.Count - 1);
+        Destroy(vToDel.gameObject);
         dispMgr.UpdateDisplays();
     }
 
