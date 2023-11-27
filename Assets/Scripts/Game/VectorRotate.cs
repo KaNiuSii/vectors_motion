@@ -14,7 +14,7 @@ public class VectorRotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Assuming data.rotationValue is in degrees and you want to rotate around the Z axis
+        if (!data.rotate) return;
         transform.Rotate(new Vector3(0, 0, data.rotationValue) * Time.deltaTime);
     }
 }

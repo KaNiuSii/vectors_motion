@@ -7,12 +7,22 @@ public class VectorData : MonoBehaviour
 {
     public Vector3 tip;
     public float rotationValue;
-    public Transform ArrowTr;
+    public float vectorScale = 1f;
+    public bool rotate = false;
+    public bool draw = false;
     public Transform Tip;
-    // Update is called once per frame
+    public Color drawColor = Color.yellow;
+    private VectorDraw vectorDraw;    
+    private void Start()
+    {
+        vectorDraw = GetComponent<VectorDraw>();
+    }
     void Update()
     {
         TipUpdate();
+        Scale();
+        vectorDraw.color = drawColor;
+        vectorDraw.draw = draw;
     }
 
     void TipUpdate()
@@ -20,14 +30,10 @@ public class VectorData : MonoBehaviour
         tip = Tip.position;
     }
 
-    public void ChangeArrowScale(float scale)
+    void Scale()
     {
-        Vector3 sc = ArrowTr.localScale;
-        sc.y = scale;
-        Vector3 pos = ArrowTr.localPosition;
-        pos.y = scale / 2;
-        
-        ArrowTr.localScale = sc;
-        ArrowTr.localPosition = pos;
+        Vector3 sc = transform.localScale;
+        sc.y = vectorScale;
+        transform.localScale = sc;
     }
 }

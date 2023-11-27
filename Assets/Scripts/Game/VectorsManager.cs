@@ -7,6 +7,7 @@ public class VectorsManager : MonoBehaviour
     public List<VectorData> vectors = new List<VectorData>();
     public VectorData mainVector;
     public GameObject vector;
+    private bool rotating = false;
     private void Start()
     {
         vectors.Add(mainVector);
@@ -20,9 +21,65 @@ public class VectorsManager : MonoBehaviour
     }
     public void RemoveVector(int index)
     {
-        if (index < 1 || index > vectors.Count) return;
+        if (index < 0 || index >= vectors.Count) return;
         VectorData v = vectors[index];
         vectors.RemoveAt(index);
         Destroy(v.gameObject);
+    }
+
+    public void RotationChange()
+    {
+        if (rotating)
+        {
+            StopRotating();
+        }
+        else
+        {
+            StartRotating();
+        }
+    }
+
+    public void StartRotating()
+    {
+        foreach (var v in vectors)
+        {
+            v.rotate = true;
+        }
+        rotating = true;
+    }
+    public void StopRotating()
+    {
+        foreach (var v in vectors)
+        {
+            v.rotate = false;
+        }
+        rotating = false;
+    }
+
+    public void ResetSimulation()
+    {
+        StopRotating();
+        ResetAllRotations();
+        ClearAllLines();
+    }
+
+    private void ClearAllLines()
+    {
+        foreach (var v in vectors)
+        {
+            LineRenderer lineRenderer = v.GetComponent<LineRenderer>();
+            if (lineRenderer != null)
+            {
+                lineRenderer.positionCount = 0;
+            }
+        }
+    }
+
+    private void ResetAllRotations()
+    {
+        foreach (var v in vectors)
+        {
+            v.transform.rotation = Quaternion.identity; // Using Quaternion.identity is more idiomatic for 'no rotation'
+        }
     }
 }

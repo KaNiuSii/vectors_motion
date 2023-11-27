@@ -30,7 +30,7 @@ public class VectorDraw : MonoBehaviour
             t += Time.deltaTime;
             return;
         }
-        if (!draw)
+        if (!draw || !data.rotate)
         {
             return;
         }
