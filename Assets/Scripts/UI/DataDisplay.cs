@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class DataDisplay : MonoBehaviour
 {
     public VectorData bind;
-    public VectorsManager vectorsManager; // Reference to the VectorsManager
+    public VectorsManager vectorsManager;
     public TextMeshProUGUI indx;
     [SerializeField]
     private Slider lenSlider;
@@ -22,7 +22,6 @@ public class DataDisplay : MonoBehaviour
 
     void Start()
     {
-        // Initial UI setup from bind vector data
         lenSlider.value = bind.vectorScale;
         speedInputField.text = bind.rotationValue.ToString();
         drawToggle.isOn = bind.draw;
@@ -31,13 +30,11 @@ public class DataDisplay : MonoBehaviour
 
     void Update()
     {
-        // Update UI from bind vector data
         bind.vectorScale = lenSlider.value;
         bind.rotationValue = float.Parse(speedInputField.text);
         bind.draw = drawToggle.isOn;
         bind.drawColor = drawColorImage.color;
 
-        // Update display texts
         int lenInt = (int)lenSlider.value;
         lenValText.text = lenInt.ToString();
     }

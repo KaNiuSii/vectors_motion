@@ -6,7 +6,7 @@ public class DataDisplayManager : MonoBehaviour
     public VectorsManager vectorsManager;
     public GameObject dataDisplayPrefab;
     private List<GameObject> spawnedDisplays = new List<GameObject>();
-    public float verticalSpacing = 300f; // Spacing between displays
+    public float verticalSpacing = 300f;
 
     private void Start()
     {
@@ -35,13 +35,13 @@ public class DataDisplayManager : MonoBehaviour
     void SpawnDataDisplay(VectorData vectorData, int index)
     {
         GameObject displayObject = Instantiate(dataDisplayPrefab, transform);
-        displayObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -index * verticalSpacing, 0); // Adjust position
+        displayObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -index * verticalSpacing, 0);
 
         DataDisplay dataDisplay = displayObject.GetComponent<DataDisplay>();
         dataDisplay.bind = vectorData;
         dataDisplay.vectorsManager = vectorsManager;
         dataDisplay.indx.text = $"{index}";
-        spawnedDisplays.Add(displayObject); // Keep track of spawned displays
+        spawnedDisplays.Add(displayObject);
     }
 
     void ClearExistingDisplays()

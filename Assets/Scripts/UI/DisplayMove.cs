@@ -8,8 +8,8 @@ public class DisplayMove : MonoBehaviour
     public RectTransform moveButton;
 
     [Header("Transition Settings")]
-    public float moveTransitionDuration = 1.0f; // Duration of the move transition in seconds
-    public float rotateTransitionDuration = 1.0f; // Duration of the rotate transition in seconds
+    public float moveTransitionDuration = 1.0f;
+    public float rotateTransitionDuration = 1.0f;
 
     private void Start()
     {
@@ -40,7 +40,7 @@ public class DisplayMove : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
-        rectTransform.anchoredPosition = endPosition; // Ensure final position is set
+        rectTransform.anchoredPosition = endPosition;
     }
 
     IEnumerator RotateOverTime(RectTransform target, float angle, float duration)
@@ -54,6 +54,6 @@ public class DisplayMove : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
-        target.rotation = endRotation; // Ensure final rotation is set
+        target.rotation = endRotation;
     }
 }

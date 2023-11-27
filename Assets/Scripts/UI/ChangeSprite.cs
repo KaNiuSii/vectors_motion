@@ -19,4 +19,11 @@ public class ChangeSprite : MonoBehaviour
         image.sprite = flag ? one : two;
         flag = !flag;
     }
+    public void ChangeOnRestart()
+    {
+        if(flag)
+        {
+            ChangeMySprite();
+        }
+    }
 }

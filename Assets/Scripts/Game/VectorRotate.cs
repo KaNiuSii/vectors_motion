@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VectorRotate : MonoBehaviour
 {
-    VectorData data;
+    private VectorData data;
 
     void Start()
     {

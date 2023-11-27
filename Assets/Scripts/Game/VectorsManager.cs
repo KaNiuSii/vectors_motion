@@ -83,7 +83,7 @@ public class VectorsManager : MonoBehaviour
     {
         foreach (var v in vectors)
         {
-            v.transform.rotation = Quaternion.identity; // Using Quaternion.identity is more idiomatic for 'no rotation'
+            v.transform.rotation = Quaternion.identity;
         }
     }
 }
